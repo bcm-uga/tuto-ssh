@@ -10,7 +10,7 @@
 
 2. Authorize your new ssh key on the TIMC servers. From within the lab you can connect to dolto.imag.fr using your TIMC password, while from outside you must connect to lacan.imag.fr which only allows key authentication, but both servers share your homedir. So, you must connect from your lab computer to dolto and add your new public key to `~/.ssh/authorized_keys`. Two ways to do this:
     1. From your lab computer, do `ssh-copy-id -i [myNewPublicKey.pub] dolto`
-    2. Same thing by hand: from your lab computer do `ssh dolto` and in file `~/.ssh/authorized_keys`, copy the complete public key you created (one key per line). In this case make sure the permissions are restrictive on `~/.ssh/` (must by 700) and on  `~/.ssh/authorized_keys` (must be 600).
+    2. Same thing by hand: from your lab computer do `ssh dolto` and in file `~/.ssh/authorized_keys`, copy the complete public key you created (one key per line). In this case make sure the permissions are restrictive on `~/.ssh/` (must be 700) and on  `~/.ssh/authorized_keys` (must be 600).
 
 Check: now, you should be able to do `ssh lacan.imag.fr` from your home computer. You can then do `ssh krakenator` from within that ssh session to connect from lacan to krakenator (using your krakenator password).
 
@@ -19,7 +19,7 @@ Note: to disconnect from an ssh connection, you can use `Ctrl/Cmd + D`
 
 ## How to make the bounce through lacan.imag.fr transparent?
 
-1. On your home computer, create file `~/ssh/config` if it doesn't exist (restrictive permissions 600 again), and add the following lines (replacing `nthierry` (twice) by *your* username on the TIMC systems)
+On your home computer, create file `~/ssh/config` if it doesn't exist (restrictive permissions 600 again), and add the following lines (replacing `nthierry` (twice) by *your* username on the TIMC systems)
     ```
     Host krakenator
     User nthierry
@@ -27,11 +27,13 @@ Note: to disconnect from an ssh connection, you can use `Ctrl/Cmd + D`
     ```
 
 On older systems you can replace the `ProxyCommand` line with
+
     ```
     ProxyCommand ssh nthierry@lacan.imag.fr "nc krakenator %p"
     ```
        
-**You can now do `ssh krakenator` to connect to krakenator, transparently going through an ssh connection via lacan.imag.fr** (if you have a permissions problem, use `chmod 600 ~/ssh/config`)
+You can now do `ssh krakenator` to connect to krakenator, transparently going through an ssh connection via lacan.imag.fr .
+If it doesn't work check the permissions on ~/.ssh and it's content, they must be restrictive as stated above.
     
     
 ## How to easily access/edit your files on krakenator?
