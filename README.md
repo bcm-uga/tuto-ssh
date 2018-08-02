@@ -1,6 +1,6 @@
 ## How to connect to krakenator from home?
 
-1. Create a public ssh key on your personal computer (you can do this easily in Tools -> Global Options -> Git/SVN) of RStudio)
+1. Create a public ssh key on your personal computer (you can do this easily in Tools -> Global Options -> Git/SVN of RStudio)
 
 1. From your lab computer, do `ssh dolto`
 
