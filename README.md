@@ -19,7 +19,7 @@ Note: to disconnect from an ssh connection, you can use `Ctrl/Cmd + D`
 
 ## How to make the bounce through lacan.imag.fr transparent?
 
-On your home computer, create file `~/ssh/config` if it doesn't exist (restrictive permissions 600 again), and add the following lines (replacing `nthierry` (twice) by *your* username on the TIMC systems)
+On your home computer, create file `~/.ssh/config` if it doesn't exist (restrictive permissions 600 again), and add the following lines (replacing `nthierry` (twice) by *your* username on the TIMC systems)
     ```
     Host krakenator
     User nthierry
@@ -27,7 +27,6 @@ On your home computer, create file `~/ssh/config` if it doesn't exist (restricti
     ```
 
 On older systems you can replace the `ProxyCommand` line with
-
     ```
     ProxyCommand ssh nthierry@lacan.imag.fr "nc krakenator %p"
     ```
