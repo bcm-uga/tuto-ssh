@@ -26,7 +26,7 @@ User nthierry
 ProxyCommand ssh -W krakenator:%p nthierry@lacan.imag.fr 
 ```
 
-On older systems you can replace the `ProxyCommand` line with
+On older systems you may have to replace the `ProxyCommand` line with
 ```
 ProxyCommand ssh nthierry@lacan.imag.fr "nc krakenator %p"
 ```
