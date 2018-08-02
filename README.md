@@ -4,8 +4,9 @@
     1. just run `ssh-keygen`
     2. if you prefer you can do this in Tools -> Global Options -> Git/SVN of RStudio
 
-    In any case <b>use a strong passphrase</b>! This ssh key will provide an entry point into the TIMC network, the passphrase is what prevents any compromise of your home computer to spread into the TIMC network.
-    This will create a pair of files in ~/.ssh/ , the private key (id_rsa with the current defaults) and the associated public key (same with .pub appended). Copy the public key to a flash drive or email it to youself so you have access to it from the lab (<b>NEVER copy the private key anywhere</b>).
+In any case <b>use a strong passphrase</b>! This ssh key will provide an entry point into the TIMC network, the passphrase is what prevents any compromise of your home computer to spread into the TIMC network.
+
+This will create a pair of files in ~/.ssh/ , the private key (id_rsa with the current defaults) and the associated public key (same with .pub appended). Copy the public key to a flash drive or email it to youself so you have access to it from the lab (<b>NEVER copy the private key anywhere</b>).
 
 2. Authorize your new ssh key on the TIMC servers. From within the lab you can connect to dolto.imag.fr using your TIMC password, while from outside you must connect to lacan.imag.fr which only allows key authentication, but both servers share your homedir. So, you must connect from your lab computer to dolto and add your new public key to `~/.ssh/authorized_keys`. Two ways to do this:
     1. From your lab computer, do `ssh-copy-id -i [myNewPublicKey.pub] dolto`
