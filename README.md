@@ -4,9 +4,9 @@
     1. just run `ssh-keygen`
     2. if you prefer you can do this in Tools -> Global Options -> Git/SVN of RStudio
 
-    In any case <b>use a strong passphrase</b>! This ssh key will provide an entry point into the TIMC network, the passphrase is what prevents any compromise of your home computer to spread into the TIMC network.
+    In any case **use a strong passphrase**! This ssh key will provide an entry point into the TIMC network, the passphrase is what prevents any compromise of your home computer to spread into the TIMC network.
 
-    This will create a pair of files in ~/.ssh/ , the private key (id_rsa with the current defaults) and the associated public key (same with .pub appended). Copy the public key to a flash drive or email it to youself so you have access to it from the lab (<b>NEVER copy the private key anywhere</b>).
+    This will create a pair of files in `~/.ssh/` , the private key (`id_rsa` with the current defaults) and the associated public key (`id_rsa.pub`). Copy the public key to a flash drive or email it to youself so you have access to it from the lab (**NEVER copy the private key anywhere**).
 
 2. Authorize your new ssh key on the TIMC servers. From within the lab you can connect to dolto.imag.fr using your TIMC password, while from outside you must connect to lacan.imag.fr which only allows key authentication, but both servers share your homedir. So, you must connect from your lab computer to dolto and add your new public key to `~/.ssh/authorized_keys`. Two ways to do this:
     1. From your lab computer, do `ssh-copy-id -i [myNewPublicKey.pub] dolto`
@@ -40,14 +40,14 @@ If it doesn't work check the permissions on ~/.ssh and it's content, they must b
 All this happens on your home computer.
 1. Install sshfs, for example on Centos 6 and 7 systems run `sudo yum install fuse-sshfs`.
 1. Create a mount point for your krakenator homedir. We recommend creating a subdir where all your sshfs mountpoints will be created, so for example: `mkdir -p ~/sshMounts/krakenator`.
-1. Add a line in /etc/fstab (replacing the [xxx] parts):
+1. Add a line in `/etc/fstab` (replacing `nthierry` (twice) by *your* username on the TIMC systems):
     ```
-    [yourTIMCusername]@krakenator:    /home/[yourHomeComputerUsername]/sshMounts/krakenator    fuse.sshfs    noauto,users    0 0
+    nthierry@krakenator:    /home/nthierry/sshMounts/krakenator    fuse.sshfs    noauto,users    0 0
     ```
 
-You can now do `mount ~/sshMounts/krakenator` to mount your krakenator homedir locally in ~/sshMounts/krakenator/ , via an ssh tunnel (and transparently via lacan thanks to the previous steps). This allows to view or edit your files on krakenator with whatever fancy GUI text editor you prefer, running on your home computer (please don't run GUI apps on krakenator). When you are done simply `umount ~/sshMounts/krakenator`.
+You can now do `mount ~/sshMounts/krakenator` to mount your krakenator homedir locally in `~/sshMounts/krakenator/` via an ssh tunnel (and transparently via lacan thanks to the previous steps). This allows to view or edit your files on krakenator with whatever fancy GUI text editor you prefer, running on your home computer (please don't run GUI apps on krakenator). When you are done simply use `umount ~/sshMounts/krakenator`.
 
-Of course the same process can be used to access files on any other ssh-accessible system, eg patator or your lab desktop computer: just create a new mountpoint and add the relevant line to `/etc/fstab`.
+Of course the same process can be used to access files on any other ssh-accessible system, e.g. patator or your lab desktop computer; just create a new mountpoint and add the relevant line to `/etc/fstab`.
 
 
 ## How to connect to the RStudio server on krakenator
