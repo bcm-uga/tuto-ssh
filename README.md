@@ -20,16 +20,16 @@ Note: to disconnect from an ssh connection, you can use `Ctrl/Cmd + D`
 ## How to make the bounce through lacan.imag.fr transparent?
 
 On your home computer, create file `~/.ssh/config` if it doesn't exist (restrictive permissions 600 again), and add the following lines (replacing `nthierry` (twice) by *your* username on the TIMC systems)
-    ```
-    Host krakenator
-    User nthierry
-    ProxyCommand ssh -W krakenator:%p nthierry@lacan.imag.fr 
-    ```
+```
+Host krakenator
+User nthierry
+ProxyCommand ssh -W krakenator:%p nthierry@lacan.imag.fr 
+```
 
 On older systems you can replace the `ProxyCommand` line with
-    ```
-    ProxyCommand ssh nthierry@lacan.imag.fr "nc krakenator %p"
-    ```
+```
+ProxyCommand ssh nthierry@lacan.imag.fr "nc krakenator %p"
+```
        
 You can now do `ssh krakenator` to connect to krakenator, transparently going through an ssh connection via lacan.imag.fr .
 If it doesn't work check the permissions on ~/.ssh and it's content, they must be restrictive as stated above.
