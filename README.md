@@ -56,3 +56,5 @@ Of course the same process can be used to access files on any other ssh-accessib
     2. In a browser, go to `http://localhost:8787/`
 
 This works by creating an ssh tunnel to krakenator, and redirecting every request made on your local computer port 8787 to krakenator:8787 via this ssh tunnel. Therefore you can do this from your lab computer, but also from your home computer if you configured your ssh access as instructed in the previous steps.
+
+To install packages that require a recent version of *gcc*, connect to krakenator via a terminal, run `scl enable devtoolset-7 bash`, then install the packages you need from this terminal. 
