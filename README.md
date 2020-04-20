@@ -51,11 +51,12 @@ You can now run `mount ~/sshMounts/krakenator` on your home computer: this mount
 Of course the same process can be used to access files on any other ssh-accessible system, e.g. luxor or your lab desktop computer; just create a new mountpoint and add the relevant line to `/etc/fstab`.
 
 
-## How to connect to the RStudio server on krakenator
+## How to connect to the RStudio servers on krakenator and luxor
 
-    1. Run `ssh -L  8787:localhost:8787 krakenator` (and keep it running)
-    2. In a browser, go to `http://localhost:8787/`
+Both krakenator and luxor offer an rstudio-like web interface thanks to rstudio-server. Each server listens on tcp port 8787, but this port is not exposed: rstudio-server only accepts connections locally. You therefore need to create an ssh tunnel from your computer to krakenator (or luxor), redirecting every request made on your local computer port 8787 to krakenator:8787 via this ssh tunnel:
+1. Run `ssh -L  8787:localhost:8787 krakenator` (and keep it running)
+1. In a browser, go to `http://localhost:8787/`
 
-This works by creating an ssh tunnel to krakenator, and redirecting every request made on your local computer port 8787 to krakenator:8787 via this ssh tunnel. Therefore you can do this from your lab computer, but also from your home computer if you configured your ssh access as instructed in the previous steps.
+You can do this from your lab computer, but also from your home computer if you configured your ssh access as instructed in the previous steps.
 
-To install packages that require a recent version of *gcc*, connect to krakenator via a terminal, run `scl enable devtoolset-7 bash`, then install the packages you need from this terminal. 
+To install R packages that require a recent version of *gcc* on krakenator, connect to krakenator via a terminal, run `scl enable devtoolset-7 bash`, then install the packages you need from this terminal. 
