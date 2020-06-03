@@ -50,6 +50,11 @@ You can now run `mount ~/sshMounts/krakenator` on your home computer: this mount
 
 Of course the same process can be used to access files on any other ssh-accessible system, e.g. luxor or your lab desktop computer; just create a new mountpoint and add the relevant line to `/etc/fstab`.
 
+NOTE: the above fstab line mounts your homedir, so you cannot access anything outside of /home/YOURLOGIN/. You can mount the root filesystem (and therefore have access to /data/) by adding a slash to the end of the first field:
+    ```
+    nthierry@luxor:/    /home/nthierry/sshMounts/luxor    fuse.sshfs    noauto,users    0 0
+    ```
+
 
 ## How to connect to the RStudio servers on krakenator and luxor
 
