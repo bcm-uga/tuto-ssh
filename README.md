@@ -35,6 +35,18 @@ ProxyCommand ssh nthierry@lacan.imag.fr "nc krakenator %p"
 You can now run `ssh krakenator` to connect to krakenator, transparently going through an ssh connection via lacan.imag.fr .
 If it doesn't work check the permissions on ~/.ssh and it's content, they must be restrictive as stated above.
     
+
+## How to prevent ssh disconnects?
+
+You may see your ssh sessions closing for no apparent reason after some period of inactivity. It's not ssh's fault, ssh is rock-solid in my experience: this is due to something (ISP?) timing out your connection between your home computer and luxor/krakenator.
+To solve this, edit `~/.ssh/config` on your home computer and add the following lines close to the top:
+```
+# have ssh send no-op codes to avoid disconnections
+Host *
+ServerAliveInterval 600
+```
+Depending on your ISP you may have to lower the interval value to 300 or even 60.
+
     
 ## How to easily access/edit your files on krakenator?
 
