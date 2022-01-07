@@ -10,10 +10,10 @@
     This will create a pair of files in `~/.ssh/` , the private key (`id_rsa` with the current defaults) and the associated public key (`id_rsa.pub`). Copy the public key on a flash drive or email it to youself so you have access to it from the lab (**NEVER copy the private key anywhere**).
 
 2. Authorize your new ssh key on the TIMC servers. From within the lab you can connect to dolto.imag.fr using your TIMC password, while from outside you must connect to lacan.imag.fr which only allows key authentication, but both servers share your homedir. So, you must connect from your lab computer to dolto and add your new public key to `~/.ssh/authorized_keys`. Two ways to do this:
-    1. From your lab computer, do `ssh-copy-id -i [myNewPublicKey.pub] dolto`
+    1. From your lab computer, do `ssh-copy-id -f -i [myNewPublicKey.pub] dolto`
     2. Same thing by hand: from your lab computer do `ssh dolto` and in file `~/.ssh/authorized_keys`, copy the complete public key you created (one key per line). In this case make sure the permissions are restrictive on `~/.ssh/` (must be 700) and on  `~/.ssh/authorized_keys` (must be 600).
 
-Check: now, you should be able to `ssh lacan.imag.fr` from your home computer. You can then `ssh krakenator` from within that ssh session to connect from lacan to krakenator (using your krakenator password).
+Check: now, you should be able to `ssh lacan.imag.fr` from your home computer (or if your home computer username is different from your TIMC username, you will need to `ssh TIMCusername@lacan.imag.fr` or `ssh -l TIMCusername lacan.imag.fr`). You can then `ssh krakenator` from within that ssh session to connect from lacan to krakenator (using your krakenator password).
 
 Note: to disconnect from an ssh connection, you can use `Ctrl/Cmd + D`
 
