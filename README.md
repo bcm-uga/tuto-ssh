@@ -53,9 +53,9 @@ Depending on your ISP you may have to lower the interval value to 300 or even 60
 All this happens on your home computer.
 1. Install sshfs, for example on Centos 6 and 7 systems run `sudo yum install fuse-sshfs`.
 1. Create a mount point for your krakenator homedir. We recommend creating a subdir where all your sshfs mountpoints will be created, so for example: `mkdir -p ~/sshMounts/krakenator`.
-1. Add a line in `/etc/fstab` (replacing `nthierry` (twice) by *your* username on the TIMC systems):
+1. Add a line in `/etc/fstab` (replacing `nthierry` (twice) by *your* username):
     ```
-    nthierry@krakenator:    /home/nthierry/sshMounts/krakenator    fuse.sshfs    noauto,users    0 0
+    nthierry@krakenator:    /home/nthierry/sshMounts/krakenator    fuse.sshfs    noauto,users,idmap=user    0 0
     ```
 
 You can now run `mount ~/sshMounts/krakenator` on your home computer: this mounts your krakenator homedir locally in `~/sshMounts/krakenator/` via an ssh tunnel (and transparently via lacan thanks to the previous steps). You can then view or edit your files on krakenator with whatever fancy GUI text editor you prefer, running on your home computer (please don't run GUI apps on krakenator). When you are done simply use `umount ~/sshMounts/krakenator`.
@@ -64,7 +64,7 @@ Of course the same process can be used to access files on any other ssh-accessib
 
 NOTE: the above fstab line mounts your homedir, so you cannot access anything outside of /home/YOURLOGIN/. You can mount the root filesystem (and therefore have access to /data/) by adding a slash to the end of the first field:
 ```
-nthierry@luxor:/    /home/nthierry/sshMounts/luxor    fuse.sshfs    noauto,users    0 0
+nthierry@luxor:/    /home/nthierry/sshMounts/luxor    fuse.sshfs    noauto,users,idmap=user    0 0
 ```
 
 
